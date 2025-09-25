@@ -1,0 +1,4 @@
+order_id,order_date,customer_id,sku,qty,price
+A1,2024-01-03,C101,S10,2,19.99
+A1,2024-01-03,C101,S11,1,9.50
+A2,2024-01-05,C102,S10,1,19.99
