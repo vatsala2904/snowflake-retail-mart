@@ -1,6 +1,10 @@
-# <PROJECT NAME>
-Problem → Design → Run locally → Tests → Results.
+# Snowflake Retail Mart
+Goal: tiny retail star schema with staging, mart, and QA checks.
 
-Badges (activate after first run):
-![CI](https://github.com/vatsala2904/<REPO>/actions/workflows/ci.yml/badge.svg)
-![CodeQL](https://github.com/vatsala2904/<REPO>/actions/workflows/codeql.yml/badge.svg)
+## Run
+1) Create DB objects: run files in `/sql` in order.
+2) Load data: python loader/load_csv.py
+3) Verify: run QA queries in `20_mart.sql` bottom section.
+
+## Notes
+- Uses Tasks/Streams in next release.
