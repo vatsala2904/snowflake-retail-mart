@@ -1,0 +1,15 @@
+CREATE OR REPLACE TABLE RETAIL_DB.RAW.ORDERS_RAW(
+  order_id STRING, order_date DATE, customer_id STRING,
+  sku STRING, qty NUMBER, price NUMBER
+);
+
+CREATE OR REPLACE TABLE RETAIL_DB.STG.ORDERS_STG AS
+SELECT
+  order_id, order_date, customer_id, sku,
+  qty::NUMBER AS qty, price::NUMBER AS price,
+  qty*price AS amount,
+  ROW_NUMBER() OVER (PARTITION BY order_id, sku ORDER BY order_date DESC) AS rn
+FROM RETAIL_DB.RAW.ORDERS_RAW;
+
+CREATE OR REPLACE VIEW RETAIL_DB.STG.ORDERS_V AS
+SELECT * FROM RETAIL_DB.STG.ORDERS_STG WHERE rn=1;
